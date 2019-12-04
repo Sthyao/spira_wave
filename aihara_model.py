@@ -2,10 +2,10 @@ import math
 import numpy as np
 
 a = 0
-kr = 0.95
+kr = 0.85
 kf = 0.15
-alpha = 4.0
-epsilon = 0.02
+alpha = 2.5
+epsilon = 0.2
 
 n = 2500
 m = 50
@@ -17,7 +17,7 @@ kh = 0.95
 
 c0 = 2.0
 c1 = -10.0
-c2 = 0.02
+c2 = 0.2
 
 #use Capital name function, others are variate
 
@@ -31,7 +31,7 @@ def Eta(t):
     return kf*Eta(t-1)+W*Chi(t-1)
 
 def F(x):
-    x[(-1.000 * x ) > 10] = 10
+    x[(-1.000 * x ) > 25] = 25
     return 1.0000 / ( 1.0000 + np.exp( -1.0000 * x / epsilon))
 
 def DT(i,j):

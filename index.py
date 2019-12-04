@@ -3,6 +3,7 @@ import aihara_model
 import random
 
 a = np.load('data/random.npy')
+site_e = np.load('data/site_e.npy')
 
 t = 300
 xArray = np.zeros((t,2500))
@@ -68,11 +69,11 @@ for i in range(300):
         print(wMat[122][i])
 """
 #wijMat(xArray[0])
-np.save('data/first',main(xArray))
-#np.save('data/wMat',wijMat(xArray[0]))
+np.save('data/second',main(xArray))
+#np.save('data/wMat',wijMat(site_e))
 #np.save('data/si',si)
-np.save('data/cArray',cArray)
-np.save('data/nArray',nArray)
+#np.save('data/cArray',cArray)
+#np.save('data/nArray',nArray)
 
 """
 
