@@ -33,7 +33,7 @@ def site_random():
         e[i] = random.choice([0,1])
     return e
 
-print(re_site_e())
-np.save('data/site_e',site_e())
-np.save('data/re_e',re_site_e())
+#print(re_site_e())
+#np.save('data/site_e',site_e())
+#np.save('data/re_e',re_site_e())
 np.save('data/random',site_random())

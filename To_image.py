@@ -43,26 +43,36 @@ def To_image(a,id):
             else:
                 toImage.putpixel((j,k),pixTupleW)
     string = str(id) + '.png'
-    toImage.save('fig/'+string,'PNG')
+    toImage.save('fig/first/'+string,'PNG')
 
 
 #print(len(bigger(a)))
-
+"""
 a = np.load('data/site_e.npy')
 To_image(bigger(a),0)
 
 a = np.load('data/re_e.npy')
 To_image(bigger(a),1)
 
+
+"""
+first = np.load('data/first.npy')
+site_e = np.load('data/site_e.npy')
+re_e = np.load('data/re_e.npy')
+"""
+temp = aihara_model.Xor(re_e,site_e)
+To_image(bigger(temp),0)
+"""
+
+for i in range(50):
+    temp = aihara_model.Xor(first[i],site_e)
+    #temp = aihara_model.Xor(temp,re_e)
+    To_image(bigger(temp),1000+i)
+
+#print(first[2])
+
 a = np.load('data/random.npy')
 To_image(bigger(a),2)
-
-a = np.load('data/first.npy')
-b = np.load('data/site_e.npy')
-a = aihara_model.Xor(a[50],b)
-To_image(bigger(a),10050)
-
-
 
 
 
