@@ -69,7 +69,7 @@ for i in range(300):
         print(wMat[122][i])
 """
 #wijMat(xArray[0])
-np.save('data/second',main(xArray))
+np.save('data/second_c',main(xArray))
 #np.save('data/wMat',wijMat(site_e))
 #np.save('data/si',si)
 #np.save('data/cArray',cArray)

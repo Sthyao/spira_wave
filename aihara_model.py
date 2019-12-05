@@ -12,12 +12,12 @@ m = 50
 
 d = 2
 
-kh = 0.95
+kh = 0.65
 #W is not define
 
-c0 = 2.0
-c1 = -10.0
-c2 = 0.2
+c0 = 1.0
+c1 = -5.0
+c2 = 0.4
 
 #use Capital name function, others are variate
 

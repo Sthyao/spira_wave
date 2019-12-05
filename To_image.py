@@ -43,7 +43,7 @@ def To_image(a,id):
             else:
                 toImage.putpixel((j,k),pixTupleW)
     string = str(id) + '.png'
-    toImage.save('fig/second/'+string,'PNG')
+    toImage.save('fig/second_c/'+string,'PNG')
 
 
 #print(len(bigger(a)))
@@ -56,7 +56,7 @@ To_image(bigger(a),1)
 
 
 """
-first = np.load('data/second.npy')
+first = np.load('data/second_c.npy')
 site_e = np.load('data/site_e.npy')
 re_e = np.load('data/re_e.npy')
 """
