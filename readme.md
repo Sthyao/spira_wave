@@ -1,30 +1,13 @@
-first:
-a = 0
-kr = 0.85
-kf = 0.10
-alpha = 3.5
-epsilon = 0.2
-
-second:
-a = 0
-kr = 0.85
+a = 2
+kr = 0.95
 kf = 0.15
-alpha = 2.5
-epsilon = 0.2
+alpha = 4
+epsilon = 0.02
 
-third:
-a = 0
-kr = 0.85
-kf = 0.15
-alpha = 2.5
-epsilon = 0.2
+and 
 
+sigmoid func: .5*(1+tanh(.5*x))
 
-with second
-cycle index：
-    20 steps
-Qualitative change number：
-    about 3 times
 
     
 

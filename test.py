@@ -1,11 +1,10 @@
 import numpy as np 
 import math
+import aihara_model
 
-si = np.load('data/si.npy')
+
 wMat = np.load('data/wMat.npy')
-xa = np.load('data/first.npy')
-ca = np.load('data/cArray.npy')
-na = np.load('data/nArray.npy')
+
 """
 for i in range(2500):
     sum = 0
@@ -22,5 +21,27 @@ def DT(i,j):
     return 25-abs(25-(abs(i-j)%50))
 print(DT(1,4))
 """
-for i in range(500):
-    print(na[0][i])
+j = 999
+num = 0 
+"""
+for i in range(2500):
+    if wMat[j][i] != 0:
+        #print(wMat[j][i])
+        num = num + 1
+        print(i+1)
+
+print(num)
+
+m = 50
+
+def dt(i,j):
+    return m/2-abs(m/2-((abs(i-j)%m)))
+
+def dl(i, j):
+    return m/2-abs(m/2-abs(math.ceil((1+i)/m)-math.ceil((j+1)/m)))
+
+print(dt(1000,852))
+print(dl(1000,852))
+"""
+print(aihara_model.wij(1000,1101))
+print(wMat[1000][852])

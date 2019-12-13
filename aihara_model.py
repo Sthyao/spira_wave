@@ -1,16 +1,16 @@
 import math
 import numpy as np
 
-a = 0
-kr = 0.85
+a = 2
+kr = 0.95
 kf = 0.15
-alpha = 2.5
-epsilon = 0.2
+alpha = 4
+epsilon = 0.02
 
 n = 2500
 m = 50
 
-d = 2
+d = 2.1
 
 kh = 0.65
 #W is not define
@@ -21,62 +21,25 @@ c2 = 0.4
 
 #use Capital name function, others are variate
 
-def Zeta(t):
-    return kr*Zeta(t-1)-alpha*Chi(t-1) + a
-
-def Chi(t):
-    return F(Zeta(t)+Eta(t))
-
-def Eta(t):
-    return kf*Eta(t-1)+W*Chi(t-1)
 
 def F(x):
-    x[(-1.000 * x ) > 25] = 25
-    return 1.0000 / ( 1.0000 + np.exp( -1.0000 * x / epsilon))
+    #temp = x
+    #temp[(-1.000 * temp ) > 15] = 15
+    #print(x)
+    return .5 * (1 + np.tanh(.5 * x))
 
-def DT(i,j):
-    return m/2-abs(m/2-(abs(i-j)%m))
-def DL(i,j):
-    return m/2-abs(m/2-abs(math.ceil(i/m)-math.ceil(j/m)))
-
-def SI(i):
-    d = 2
-    Si = np.zeros(50)
-    step = 0
-    for j in range(2500):
-        #print(DL(i,j),DT(i,j))
-        
-        if DL(i,j) <= d and DT(i,j) <= d:
-            Si[step] = j
-            step = step+1
-        
-    return Si
-
-
-def wij(i,j,array,Si):
-    for num in range(50):
-        if Si[num] == j:
-            if j == 0 and num == 0:
-            #return (-1)**(i+j+math.ceil(i/m)+math.ceil(j/m))
-                return (2*array[i]-1)*(2*array[j]-1)
-            elif j == 0 and num != 0:
-                return 0
-            else:
-                return (2*array[i]-1)*(2*array[j]-1)
-        else:
-            pass
+def wij(i,j):
+    DL = m/2-abs(m/2-((abs(i-j)%m)))
+    DT = m/2-abs(m/2-abs(math.ceil((1+i)/m)-math.ceil((j+1)/m)))
+    if DL <= d and DT <= d and i != j:
+        return (-1)**(i + j + math.ceil((1+i)/m) + math.ceil((1+j)/m))
     return 0
+
 
 def Xor(arrayx,arraye):
     arraytemp = np.zeros(2500)
-    #arrayx[arrayx <= 0.5] = 0
-    #arrayx[arrayx > 0.5] = 1
-    arraytemp = arrayx
-    arraytemp = (arraye != np.ceil(arrayx - 0.5))
-    #arraytemp = (arraye != np.ceil(arraytemp - 0.5)) 
-    #print(arrayx)
+    arraytemp = np.logical_xor(arraye , np.ceil(arrayx - 0.5))
     return arraytemp
-
 
 def MatToArr(Mat):
     arraytemp = np.zeros(2500)
@@ -97,9 +60,3 @@ def ArrToMat(Arr):
         
 
 #phase space control
-
-def Hi(t):
-    return kh * Hi(t-1) + np.log10(1+abs(Eta(t-1)))
-
-def U(t,array):
-    return min(array(t))
