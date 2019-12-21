@@ -1,7 +1,7 @@
 import math
 import numpy as np
 
-a = 2
+a = 0
 kr = 0.95
 kf = 0.15
 alpha = 4
@@ -10,23 +10,23 @@ epsilon = 0.02
 n = 2500
 m = 50
 
-d = 2.1
+d = 2.0
 
-kh = 0.65
-#W is not define
-
-c0 = 1.0
-c1 = -5.0
-c2 = 0.4
+kh = 0.95
+c0 = 4.00
+c1 = -10.00
+c2 = 0.60
 
 #use Capital name function, others are variate
 
 
 def F(x):
     #temp = x
-    #temp[(-1.000 * temp ) > 15] = 15
+    #x[(-1.000 * x ) > 5.1] = 5.1
     #print(x)
-    return .5 * (1 + np.tanh(.5 * x))
+    
+    return 1 / (1 + np.exp(-x/epsilon))
+    #return 0.5 * (1 + np.tanh(0.5 * x))
 
 def wij(i,j):
     DL = m/2-abs(m/2-((abs(i-j)%m)))

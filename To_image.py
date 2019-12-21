@@ -35,22 +35,27 @@ def To_image(a,id):
             else:
                 toImage.putpixel((j,k),pixTupleW)
     string = str(id) + '.png'
-    toImage.save('fig/output/'+ "t=" + string,'PNG')
-
+    toImage.save('fig/control/'+ "t=" + string,'PNG')
+    #toImage.save('fig/output/'+ "t=" + string,'PNG')
 
 
 output = np.load('data/output.npy')
+control = np.load('data/control.npy')
 site_e = np.load('data/site_e.npy')
 re_e = np.load('data/re_e.npy')
 
+"""
 for i in range(300):
     temp = aihara_model.Xor(output[i],site_e)
-    To_image(bigger(temp),1000+i)
+    To_image(bigger(temp),i)
+"""
+def draw(x):
+    for i in range(50):
+        temp = aihara_model.Xor(x[i*4],site_e)
+        To_image(bigger(temp),i*4)
 
-
-
-
-
+draw(control)
+#draw(output)
 
 
 

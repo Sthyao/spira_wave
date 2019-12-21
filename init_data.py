@@ -59,5 +59,6 @@ def cArray():
 #np.save('data/re_e',re_site_e())
 #np.save('data/random',site_random())
 
-np.save('data/cArray',cArray())
-np.save('data/nArray',nArray())
+#np.save('data/c0',cArray())
+#np.save('data/n0',nArray())
+np.save('data/wMat',wijMat())
